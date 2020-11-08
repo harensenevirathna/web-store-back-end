@@ -101,7 +101,7 @@ public class WebStoreControllerTest {
     }
 
     private static BigDecimal getTotalPriceForQuantity(Product requestproduct, Integer i) {
-        double price = 2d;
+        double price = 0d;
         int extraUnit = i % requestproduct.getUnitsPerCarton();
         if (extraUnit != 0) {
 
@@ -170,10 +170,9 @@ public class WebStoreControllerTest {
             //Get Carton count
             int cartonCount = (i - extraUnit) / requestproduct.getUnitsPerCarton();
 
-            // Calculate 10% Discount If customer purchase 3 cartons or more
+            // Calculate 10% Discount for All cartons If customer purchase 3 cartons or more
             if (cartonCount >= 3) {
-                System.out.println("run");
-                discount = requestproduct.getPrice() * 10 / 100;
+                discount = (requestproduct.getPrice() * 10 / 100) * cartonCount;
                 expectitemresult.put("discountDescription", "10% Discount");
             }
 
@@ -194,9 +193,9 @@ public class WebStoreControllerTest {
             //Get Carton count
             int cartonCount = (i - extraUnit) / requestproduct.getUnitsPerCarton();
 
-            // Calculate 10% Discount If customer purchase 3 cartons or more
+            // Calculate 10% Discount for All cartons If customer purchase 3 cartons or more
             if (cartonCount >= 3) {
-                discount = requestproduct.getPrice() * 10 / 100;
+                discount = (requestproduct.getPrice() * 10 / 100) * cartonCount;
                 expectitemresult.put("discountDescription", "10% Discount");
             }
 

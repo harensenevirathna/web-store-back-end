@@ -136,9 +136,9 @@ public class WebStoreServiceImpl implements WebStoreService {
             //Get Carton count
             int cartonCount = (i - extraUnit) / requestproduct.getUnitsPerCarton();
 
-            // Calculate 10% Discount If customer purchase 3 cartons or more
+            // Calculate 10% Discount for All cartons If customer purchase 3 cartons or more
             if (cartonCount >= 3) {
-                discount = requestproduct.getPrice() * 10 / 100;
+                discount = (requestproduct.getPrice() * 10 / 100) * cartonCount;
                 response.put("discountDescription", "10% Discount");
             }
 
@@ -160,9 +160,9 @@ public class WebStoreServiceImpl implements WebStoreService {
             //Get Carton count
             int cartonCount = (i - extraUnit) / requestproduct.getUnitsPerCarton();
 
-            // Calculate 10% Discount If customer purchase 3 cartons or more
+            // Calculate 10% Discount for All cartons If customer purchase 3 cartons or more
             if (cartonCount >= 3) {
-                discount = requestproduct.getPrice() * 10 / 100;
+                discount = (requestproduct.getPrice() * 10 / 100) * cartonCount;
                 response.put("discountDescription", "10% Discount");
             }
 
